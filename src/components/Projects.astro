@@ -80,7 +80,7 @@ const PROJECTS = projectsData.map((project) => ({
       return (
         <article class="project-card flex flex-col space-x-0 space-y-6 group md:flex-row md:space-x-10 md:space-y-0">
           <div class="w-full md:w-1/2 flex flex-col gap-3">
-            <div class="project-gallery relative flex items-center justify-center shadow-xl overflow-hidden rounded-xl border border-gray-200/40 dark:border-gray-800 lg:hover:border-yellow-400/30 bg-black/60 dark:bg-gray-950 aspect-video w-full group/img">
+            <div class="project-gallery relative flex items-center justify-center shadow-xl overflow-hidden rounded-xl border border-stone-200/60 dark:border-gray-800 lg:hover:border-amber-600/40 bg-black/60 dark:bg-gray-950 aspect-video w-full group/img">
               <img
                 alt={title}
                 class="main-project-image object-contain w-full h-full transition-opacity duration-300"
@@ -90,7 +90,7 @@ const PROJECTS = projectsData.map((project) => ({
 
               {projectImages.length > 1 && (
                 <>
-                  <span class="gallery-counter absolute top-3 right-3 px-2 py-0.5 text-xs font-mono font-medium rounded-md bg-black/80 text-yellow-400 backdrop-blur-md border border-white/10 select-none">
+                  <span class="gallery-counter absolute top-3 right-3 px-2 py-0.5 text-xs font-mono font-medium rounded-md bg-black/80 text-amber-400 backdrop-blur-md border border-white/10 select-none">
                     1 / {projectImages.length}
                   </span>
 
@@ -126,7 +126,7 @@ const PROJECTS = projectsData.map((project) => ({
                     type="button"
                     class={`thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-200 w-20 sm:w-24 aspect-video bg-black/40 cursor-pointer ${
                       idx === 0
-                        ? "border-yellow-400 ring-2 ring-yellow-400/40 opacity-100"
+                        ? "border-amber-600 ring-2 ring-amber-500/40 opacity-100"
                         : "border-transparent opacity-60 hover:opacity-100 hover:scale-105"
                     }`}
                     data-src={imgUrl}
@@ -221,17 +221,17 @@ const PROJECTS = projectsData.map((project) => ({
         thumbs.forEach((thumb, i) => {
           if (i === currentIndex) {
             thumb.classList.add(
-              "border-yellow-400",
+              "border-amber-600",
               "ring-2",
-              "ring-yellow-400/40",
+              "ring-amber-500/40",
               "opacity-100"
             )
             thumb.classList.remove("border-transparent", "opacity-60")
           } else {
             thumb.classList.remove(
-              "border-yellow-400",
+              "border-amber-600",
               "ring-2",
-              "ring-yellow-400/40",
+              "ring-amber-500/40",
               "opacity-100"
             )
             thumb.classList.add("border-transparent", "opacity-60")
