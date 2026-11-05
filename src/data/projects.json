@@ -1,17 +1,83 @@
 [
   {
-    "title": "SVGL - A beautiful library with SVG logos",
-    "description": "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    "link": "https://svgl.vercel.app/",
-    "github": "https://github.com/pheralb/svgl",
-    "image": "/projects/svgl.webp",
-    "tags": ["NEXT", "TAILWIND"]
+    "title": "Asegúrame (Honduras) — Insurtech & CRM",
+    "description": "Desarrollo, mantenimiento y evolución de la infraestructura web y el CRM corporativo de Asegúrame, plataforma pionera en el sector Insurtech en Honduras. Rediseño integral y optimización de flujos de cotización y emisión en línea.",
+    "link": "https://www.asegurame.hn/",
+    "image": "/projects/asegurame-1.jpeg",
+    "images": [
+      "/projects/asegurame-1.jpeg",
+      "/projects/asegurame-2.jpeg",
+      "/projects/asegurame-3.jpeg",
+      "/projects/asegurame-4.jpeg",
+      "/projects/asegurame-5.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "MONGODB"]
   },
   {
-    "title": "AdventJS - Retos de programación con JavaScript y TypeScript",
-    "description": "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    "link": "https://adventjs.dev",
-    "image": "/projects/adventjs.webp",
-    "tags": ["NEXT", "TAILWIND"]
+    "title": "Shopineoh (Fundación Terra Te Impulsa) — Marketplace",
+    "description": "Infraestructura web de Shopineoh para Fundación Terra Te Impulsa. Marketplace regional diseñado para impulsar a MIPYMES hondureñas con catálogo interactivo de productos, pasarela, gestión de temporadas y promociones con alta disponibilidad.",
+    "link": "https://shopineoh.com",
+    "image": "/projects/shopineoh-1.jpeg",
+    "images": [
+      "/projects/shopineoh-1.jpeg",
+      "/projects/shopineoh-2.png",
+      "/projects/shopineoh-3.jpeg",
+      "/projects/shopineoh-4.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Admin Terra (Fundación Terra) — Gestor de Contactos",
+    "description": "Panel administrativo y gestor de contactos desarrollado a la medida para Fundación Terra, enfocado en la centralización, consulta ágil y administración eficiente de la red de contactos y entidades de la organización.",
+    "image": "/projects/admin-terra-1.jpeg",
+    "images": [
+      "/projects/admin-terra-1.jpeg",
+      "/projects/admin-terra-2.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Patas.cr — E-Commerce / Marketplace (Costa Rica)",
+    "description": "Plataforma de comercio electrónico internacional con sede en Costa Rica para productos de cuidado y bienestar animal. Desarrollo e integración de catálogo, filtros avanzados, selector de variantes de compra y experiencia de usuario optimizada.",
+    "link": "https://patascr.com",
+    "image": "/projects/patas-1.jpeg",
+    "images": [
+      "/projects/patas-1.jpeg",
+      "/projects/patas-2.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Simpli — Plataforma de Gestión Médica & Seguros",
+    "description": "Simpli es una plataforma tecnológica de apoyo administrativo y financiero diseñada para profesionales de la salud y centros médicos. Especializada en gestionar y simplificar trámites de seguros médicos: facturación según códigos CPT, seguimiento a reembolsos de cirugías y procedimientos, gestión de preautorizaciones y seguimiento de pagos. Todos los casos en un solo lugar con visibilidad en tiempo real.",
+    "image": "/projects/simpli-1.jpeg",
+    "images": [
+      "/projects/simpli-1.jpeg",
+      "/projects/simpli-2.jpeg",
+      "/projects/simpli-3.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Plaza San Miguel — Portal Inmobiliario & Preventa",
+    "description": "Sitio web de preventa comercial y residencial en Tegucigalpa (36 apartamentos loft y 30 locales comerciales). Visualización interactiva de planos arquitectónicos por nivel, especificaciones de modelos, amenidades y canal de agendamiento de citas.",
+    "link": "https://plaza-sanmiguel.com/",
+    "image": "/projects/plaza-san-miguel-1.jpeg",
+    "images": [
+      "/projects/plaza-san-miguel-1.jpeg",
+      "/projects/plaza-san-miguel-2.jpeg",
+      "/projects/plaza-san-miguel-3.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "FIKA & Sistema de Gestión de Viáticos (Televicentro)",
+    "description": "Desarrollo y mantenimiento de FIKA, la plataforma digital y red social interna de comunicación corporativa para Televicentro, Emisoras Unidas y afiliadas. Incluye la optimización y automatización del sistema de viáticos para más de 800 colaboradores corporativos.",
+    "link": "https://fika.hn/",
+    "image": "/projects/fika.jpeg",
+    "images": [
+      "/projects/fika.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "LARAVEL"]
   }
 ]

@@ -2,77 +2,260 @@
 import GitHub from "./icons/GitHub.astro"
 import NextJS from "./icons/NextJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
+import ReactIcon from "./icons/React.astro"
+import TypeScriptIcon from "./icons/TypeScript.astro"
+import LaravelIcon from "./icons/Laravel.astro"
+import CSharpIcon from "./icons/CSharp.astro"
+import DatabaseIcon from "./icons/Database.astro"
+import PostgresIcon from "./icons/Postgres.astro"
+import MongoDBIcon from "./icons/MongoDB.astro"
+import RobotIcon from "./icons/Robot.astro"
 import ExternalLink from "./icons/ExternalLink.astro"
 import LinkButton from "./LinkButton.astro"
 import projectsData from "@/data/projects.json"
 
 const TAGS: Record<string, { name: string; class: string; icon: any }> = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
+  REACT: {
+    name: "React",
+    class: "bg-[#0f3460] text-[#61dafb] border border-[#61dafb]/20",
+    icon: ReactIcon,
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-[#00273f] text-[#3178c6] border border-[#3178c6]/20",
+    icon: TypeScriptIcon,
   },
   TAILWIND: {
     name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
+    class: "bg-[#003159] text-sky-200 border border-sky-400/20",
     icon: Tailwind,
+  },
+  LARAVEL: {
+    name: "Laravel",
+    class: "bg-[#451414] text-red-200 border border-red-500/20",
+    icon: LaravelIcon,
+  },
+  POSTGRES: {
+    name: "PostgreSQL",
+    class: "bg-[#0b1d33] text-[#4287f5] border border-[#4287f5]/30",
+    icon: PostgresIcon,
+  },
+  MONGODB: {
+    name: "MongoDB",
+    class: "bg-[#052818] text-[#13aa52] border border-[#13aa52]/30",
+    icon: MongoDBIcon,
+  },
+  CSHARP: {
+    name: "C# / .NET",
+    class: "bg-[#311b50] text-purple-200 border border-purple-400/20",
+    icon: CSharpIcon,
+  },
+  SQL: {
+    name: "SQL & Databases",
+    class: "bg-[#1f2937] text-teal-200 border border-teal-500/20",
+    icon: DatabaseIcon,
+  },
+  AI: {
+    name: "IA & Automatización",
+    class: "bg-[#3b2405] text-amber-200 border border-amber-500/20",
+    icon: RobotIcon,
+  },
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white border border-white/20",
+    icon: NextJS,
   },
 }
 
 const PROJECTS = projectsData.map((project) => ({
   ...project,
-  tags: project.tags.map((key) => TAGS[key]),
+  tags: (project.tags || []).map((key) => TAGS[key]).filter(Boolean),
 }))
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-20">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-6 group md:flex-row md:space-x-10 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition-all duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-[0_20px_60px_-10px_rgba(251,191,36,0.2)] lg:border lg:border-gray-800 lg:hover:border-yellow-400/30 lg:hover:bg-gray-800/50">
-      <img alt={title} class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true"></div>
-    </div>
-  </div>
+    PROJECTS.map(({ image, images, title, description, tags, link, github }) => {
+      const projectImages = images && images.length > 0 ? images : [image]
+      return (
+        <article class="project-card flex flex-col space-x-0 space-y-6 group md:flex-row md:space-x-10 md:space-y-0">
+          <div class="w-full md:w-1/2 flex flex-col gap-3">
+            <div class="project-gallery relative flex items-center justify-center shadow-xl overflow-hidden rounded-xl border border-gray-200/40 dark:border-gray-800 lg:hover:border-yellow-400/30 bg-black/60 dark:bg-gray-950 aspect-video w-full group/img">
+              <img
+                alt={title}
+                class="main-project-image object-contain w-full h-full transition-opacity duration-300"
+                loading="lazy"
+                src={projectImages[0]}
+              />
 
-  <div class="w-full md:w-1/2 md:max-w-lg flex flex-col justify-center">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <ul class="flex flex-row flex-wrap mt-3 gap-2">
-      {tags.map((tag) => (
-        <li>
-          <span
-            class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
-          >
-            <tag.icon class="size-4" />
-            {tag.name}
-          </span>
-        </li>
-      ))}
-    </ul>
+              {projectImages.length > 1 && (
+                <>
+                  <span class="gallery-counter absolute top-3 right-3 px-2 py-0.5 text-xs font-mono font-medium rounded-md bg-black/80 text-yellow-400 backdrop-blur-md border border-white/10 select-none">
+                    1 / {projectImages.length}
+                  </span>
 
-    <p class="mt-3 text-gray-700 dark:text-gray-400 text-pretty">{description}</p>
-    <footer class="flex items-center mt-4 gap-x-4">
-      {github && (
-        <LinkButton href={github}>
-          <GitHub class="size-5" />
-          Code
-        </LinkButton>
-      )}
-      {link && (
-        <LinkButton href={link}>
-          <ExternalLink class="size-4" />
-          Preview
-        </LinkButton>
-      )}
-    </footer>
-  </div>
-</article>
-    ))
+                  <button
+                    type="button"
+                    class="prev-img-btn absolute left-2 top-1/2 -translate-y-1/2 size-9 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition opacity-90 md:opacity-0 md:group-hover/img:opacity-100 hover:scale-110 cursor-pointer border border-white/10 shadow-md"
+                    aria-label="Imagen anterior"
+                  >
+                    <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    class="next-img-btn absolute right-2 top-1/2 -translate-y-1/2 size-9 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition opacity-90 md:opacity-0 md:group-hover/img:opacity-100 hover:scale-110 cursor-pointer border border-white/10 shadow-md"
+                    aria-label="Imagen siguiente"
+                  >
+                    <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
+
+            {projectImages.length > 1 && (
+              <div
+                class="flex gap-2 overflow-x-auto pb-1 max-w-full scrollbar-thin"
+                aria-label="Miniaturas de capturas del proyecto"
+              >
+                {projectImages.map((imgUrl, idx) => (
+                  <button
+                    type="button"
+                    class={`thumb-btn flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-200 w-20 sm:w-24 aspect-video bg-black/40 cursor-pointer ${
+                      idx === 0
+                        ? "border-yellow-400 ring-2 ring-yellow-400/40 opacity-100"
+                        : "border-transparent opacity-60 hover:opacity-100 hover:scale-105"
+                    }`}
+                    data-src={imgUrl}
+                    data-index={idx}
+                    aria-label={`Ver captura ${idx + 1}`}
+                  >
+                    <img
+                      src={imgUrl}
+                      alt={`Miniatura ${idx + 1}`}
+                      class="w-full h-full object-cover object-top"
+                      loading="lazy"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div class="w-full md:w-1/2 md:max-w-lg flex flex-col justify-center">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <ul class="flex flex-row flex-wrap mt-3 gap-2">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`flex items-center gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2.5 font-medium`}
+                  >
+                    <tag.icon class="size-4" />
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p class="mt-3 text-gray-700 dark:text-gray-400 text-pretty">
+              {description}
+            </p>
+            <footer class="flex items-center mt-4 gap-x-4">
+              {github && (
+                <LinkButton href={github}>
+                  <GitHub class="size-5" />
+                  Código
+                </LinkButton>
+              )}
+              {link && (
+                <LinkButton href={link}>
+                  <ExternalLink class="size-4" />
+                  Sitio Web
+                </LinkButton>
+              )}
+            </footer>
+          </div>
+        </article>
+      )
+    })
   }
 </div>
 
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const articles = document.querySelectorAll("article.project-card")
+    articles.forEach((article) => {
+      const mainImg = article.querySelector(".main-project-image") as HTMLImageElement | null
+      const counter = article.querySelector(".gallery-counter")
+      const thumbs = article.querySelectorAll(".thumb-btn")
+      const prevBtn = article.querySelector(".prev-img-btn")
+      const nextBtn = article.querySelector(".next-img-btn")
 
+      if (!mainImg || thumbs.length <= 1) return
 
+      const images = Array.from(thumbs).map(
+        (btn) => btn.getAttribute("data-src") || ""
+      )
+      let currentIndex = 0
+
+      const updateGallery = (index: number) => {
+        if (index < 0) index = images.length - 1
+        if (index >= images.length) index = 0
+        currentIndex = index
+
+        mainImg.style.opacity = "0.4"
+        setTimeout(() => {
+          mainImg.src = images[currentIndex]
+          mainImg.style.opacity = "1"
+        }, 120)
+
+        if (counter) {
+          counter.textContent = `${currentIndex + 1} / ${images.length}`
+        }
+
+        thumbs.forEach((thumb, i) => {
+          if (i === currentIndex) {
+            thumb.classList.add(
+              "border-yellow-400",
+              "ring-2",
+              "ring-yellow-400/40",
+              "opacity-100"
+            )
+            thumb.classList.remove("border-transparent", "opacity-60")
+          } else {
+            thumb.classList.remove(
+              "border-yellow-400",
+              "ring-2",
+              "ring-yellow-400/40",
+              "opacity-100"
+            )
+            thumb.classList.add("border-transparent", "opacity-60")
+          }
+        })
+      }
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener("click", () => updateGallery(i))
+      })
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", (e) => {
+          e.stopPropagation()
+          updateGallery(currentIndex - 1)
+        })
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", (e) => {
+          e.stopPropagation()
+          updateGallery(currentIndex + 1)
+        })
+      }
+    })
+  })
+</script>

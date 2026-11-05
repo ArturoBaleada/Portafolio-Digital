@@ -18,23 +18,22 @@ const {
   canonical = Astro.url.href,
 } = Astro.props;
 
-const siteUrl = "https://porfolio.dev";
+const siteUrl = "https://darbyrodriguez.dev";
 const ogImage = new URL(image, siteUrl).toString();
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Miguel Ángel Durán",
+  name: "Darby Arturo Rodríguez Navarro",
   url: siteUrl,
   sameAs: [
-    "https://linkedin.com/in/midudev",
-    "https://github.com/midudev",
-    "https://twitter.com/midudev",
+    "https://www.linkedin.com/in/darby-arturo-rodr%C3%ADguez-navarro-591b49231",
+    "https://github.com/ArturoBaleada",
   ],
-  jobTitle: "Ingeniero de Software y Creador de Contenido",
+  jobTitle: "Desarrollador de Software & Especialista en Automatización e IA",
   worksFor: {
     "@type": "Organization",
-    name: "Freelance",
+    name: "Ingeniería Digital",
   },
 };
 ---
@@ -45,7 +44,7 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="author" content="Miguel Ángel Durán" />
+    <meta name="author" content="Darby Arturo Rodríguez Navarro" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical -->
@@ -59,13 +58,11 @@ const jsonLd = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="es_ES" />
-    <meta property="og:site_name" content="midudev · Porfolio" />
+    <meta property="og:locale" content="es_HN" />
+    <meta property="og:site_name" content="Darby Rodríguez · Porfolio" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@midudev" />
-    <meta name="twitter:creator" content="@midudev" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
@@ -79,6 +76,16 @@ const jsonLd = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="darkreader-lock" />
+    <script is:inline>
+      const getThemePreference = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      };
+      const isDark = getThemePreference() === 'dark';
+      document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    </script>
     <ViewTransitions />
   </head>
 

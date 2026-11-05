@@ -1,15 +1,16 @@
 ---
-const personalImageAlt = "Miguel Ángel"
+const personalImageAlt = "Darby Rodríguez"
 import Badge from "@/components/Badge.astro"
 import GitHubIcon from "@/components/icons/GitHub.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
 import SparklesIcon from "@/components/icons/Sparkles.astro"
+import PhoneIcon from "@/components/icons/Phone.astro"
 import SocialPill from "@/components/SocialPill.astro"
 ---
 
-<div class="max-w-xl">
-  <div class="anim-fade-in flex gap-4 mb-6 items-center">
+<div class="max-w-2xl">
+  <div class="anim-fade-in flex flex-wrap gap-5 mb-8 items-center">
     <!-- Avatar with ambient glow -->
     <div class="relative flex-shrink-0">
       <div
@@ -18,13 +19,13 @@ import SocialPill from "@/components/SocialPill.astro"
       >
       </div>
       <img
-        class="relative rounded-full shadow-2xl size-20 ring-2 ring-yellow-400/60 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-950"
-        src="/midudev.webp"
+        class="relative rounded-full shadow-2xl size-36 sm:size-48 ring-2 ring-yellow-400/60 ring-offset-4 ring-offset-gray-50 dark:ring-offset-gray-950 object-cover object-top"
+        src="/darby.jpg"
         alt={personalImageAlt}
       />
     </div>
     <a
-      href="https://linkedin.com/in/midudev"
+      href="https://www.linkedin.com/in/darby-arturo-rodr%C3%ADguez-navarro-591b49231"
       target="_blank"
       rel="noopener noreferrer"
       class="flex items-center transition md:justify-center md:hover:scale-105"
@@ -36,31 +37,34 @@ import SocialPill from "@/components/SocialPill.astro"
   <h1
     class="anim-fade-in anim-delay-1 text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
-    Hey, soy <span class="gradient-name">midudev</span>
+    ¡Hola! Soy <span class="gradient-name">Darby Rodríguez</span>
   </h1>
 
   <p
     class="anim-fade-in anim-delay-2 mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    +15 años de experiencia. <strong
-      >Ingeniero de Software y Creador de Contenido sobre Programación</strong
-    > de Barcelona, España 🇪🇸. Especializado en el desarrollo de aplicaciones web
-    únicas.
+    +4 años de experiencia. <strong
+      >Desarrollador de Software & Especialista en Automatización e IA</strong
+    > de Honduras 🇭🇳. Especializado en arquitectura web end-to-end, plataformas Insurtech y soluciones escalables impulsadas por Inteligencia Artificial.
   </p>
 
   <nav
     class="anim-fade-in anim-delay-3 flex flex-wrap gap-4 mt-8"
     aria-label="Redes sociales y contacto"
   >
-    <SocialPill href="mailto:miduga@gmail.com">
+    <SocialPill href="mailto:darbyrodriguez@outlook.com">
       <MailIcon class="size-4" />
-      Contáctame
+      darbyrodriguez@outlook.com
     </SocialPill>
-    <SocialPill href="https://linkedin.com/in/midudev">
+    <SocialPill href="https://www.linkedin.com/in/darby-arturo-rodr%C3%ADguez-navarro-591b49231">
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
-    <SocialPill href="https://github.com/midudev">
+    <SocialPill href="https://wa.me/50492887708">
+      <PhoneIcon class="size-4" />
+      (504) 9288-7708
+    </SocialPill>
+    <SocialPill href="https://github.com/ArturoBaleada">
       <GitHubIcon class="size-4" />
       GitHub
     </SocialPill>

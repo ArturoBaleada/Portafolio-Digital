@@ -1,140 +1,61 @@
 ---
 import SunIcon from "./icons/Sun.astro"
 import MoonIcon from "./icons/Moon.astro"
-import SystemIcon from "./icons/System.astro"
-
-const THEMES = ["Light", "Dark", "System"]
 ---
 
-<div class="relative ml-1 mr-1">
+<div class="relative flex items-center">
   <button
-    transition:persist
     id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
+    type="button"
+    aria-label="Cambiar entre modo claro y oscuro"
+    title="Cambiar tema (Claro / Oscuro)"
+    class="relative p-1.5 rounded-full text-gray-700 dark:text-yellow-400 hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer flex items-center justify-center hover:scale-110 active:scale-95"
   >
-    <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-    <SystemIcon
-      id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
+    <!-- Icono Sol: se muestra en modo oscuro para invitar a cambiar a claro -->
+    <span class="sun-icon hidden dark:inline-flex items-center justify-center transition-transform duration-300 hover:rotate-45">
+      <SunIcon class="size-4 sm:size-5" />
+    </span>
+    <!-- Icono Luna: se muestra en modo claro para invitar a cambiar a oscuro -->
+    <span class="moon-icon inline-flex dark:hidden items-center justify-center text-gray-700 transition-transform duration-300 hover:-rotate-12">
+      <MoonIcon class="size-4 sm:size-5" />
+    </span>
   </button>
-  <div
-    transition:persist
-    id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
-  >
-    <ul>
-      {
-        THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
-            {theme}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
 </div>
 
-<style>
-  #themes-menu.open {
-    display: inline;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-
-  @keyframes scale-up-center {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-</style>
-
 <script>
-  type ThemePreference = "dark" | "light" | "system"
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.contains("dark")
+    const newTheme = isDark ? "light" : "dark"
 
-  const DARK: ThemePreference = "dark"
-  const LIGHT: ThemePreference = "light"
-  const SYSTEM: ThemePreference = "system"
-  const THEME_STORAGE_KEY = "theme"
-
-  let remove: (() => void) | null = null
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu") as HTMLDivElement
-
-  const getThemePreference = (): ThemePreference => {
-    if (typeof localStorage !== "undefined") {
-      return (localStorage.getItem(THEME_STORAGE_KEY) as ThemePreference) ?? SYSTEM
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
     }
 
-    return matchMedia.matches ? DARK : LIGHT
+    localStorage.setItem("theme", newTheme)
   }
 
-  const updateIcon = (themePreference: ThemePreference): void => {
-    document.querySelectorAll<HTMLElement>(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
-    })
-  }
-
-  const updateTheme = (): void => {
-    if (remove != null) {
-      remove()
+  const setupThemeToggle = () => {
+    const btn = document.getElementById("theme-toggle-btn")
+    if (btn) {
+      btn.onclick = toggleTheme
     }
-    matchMedia.addEventListener("change", updateTheme)
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme)
+  }
+
+  // Configurar listeners
+  setupThemeToggle()
+  document.addEventListener("astro:page-load", setupThemeToggle)
+  document.addEventListener("astro:after-swap", () => {
+    const savedTheme = localStorage.getItem("theme")
+    if (
+      savedTheme === "dark" ||
+      (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
     }
-
-    const themePreference = getThemePreference()
-    const isDark =
-      themePreference === DARK ||
-      (themePreference === SYSTEM && matchMedia.matches)
-
-    updateIcon(themePreference)
-    document.documentElement.classList.toggle("dark", isDark)
-  }
-
-  updateTheme()
-
-  let abortController: AbortController | null = null
-
-  const attachListeners = () => {
-    abortController?.abort()
-    abortController = new AbortController()
-    const { signal } = abortController
-
-    document.addEventListener("click", () => themesMenu.classList.remove("open"), { signal })
-
-    document.getElementById("theme-toggle-btn")?.addEventListener("click", (e) => {
-      e.stopPropagation()
-      const isClosed = !themesMenu.classList.contains("open")
-      themesMenu.classList.toggle("open", isClosed)
-    }, { signal })
-
-    document.querySelectorAll<HTMLLIElement>(".themes-menu-option").forEach((element) => {
-      element.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement
-        const theme = target.innerText.toLowerCase().trim() as ThemePreference
-        localStorage.setItem(THEME_STORAGE_KEY, theme)
-        updateTheme()
-      }, { signal })
-    })
-  }
-
-  attachListeners()
-
-  document.addEventListener('astro:after-swap', () => {
-    updateTheme();
-    attachListeners();
-    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+    setupThemeToggle()
   })
 </script>
