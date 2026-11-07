@@ -1,6 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro"
-
 import AboutMe from "@/components/AboutMe.astro"
 import Briefcase from "@/components/icons/Briefcase.astro"
 import CodeDots from "@/components/icons/CodeDots.astro"
@@ -10,39 +9,43 @@ import Projects from "@/components/Projects.astro"
 import SectionContainer from "@/components/SectionContainer.astro"
 import Hero from "@/components/Hero.astro"
 import TitleSection from "@/components/TitleSection.astro"
+import { useTranslations } from "@/i18n/ui"
+
+const t = useTranslations("es")
 ---
 
 <Layout
-  title="Porfolio de Darby Rodríguez - Desarrollador de Software & Especialista en IA y Automatización"
-  description="Desarrollador Full Stack & Especialista en Automatización e Inteligencia Artificial. +4 años de experiencia en arquitectura web, plataformas Insurtech, bases de datos masivas y Model Context Protocols (MCP)."
+  title={t("seo.title")}
+  description={t("seo.description")}
+  lang="es"
 >
   <main class="px-4">
     <SectionContainer class="py-16 md:py-36">
-      <Hero />
+      <Hero lang="es" />
     </SectionContainer>
     <div class="space-y-24">
       <SectionContainer id="experiencia">
         <TitleSection>
           <Briefcase class="size-8" />
-          Experiencia laboral
+          {t("section.experience")}
         </TitleSection>
-        <Experience />
+        <Experience lang="es" />
       </SectionContainer>
 
       <SectionContainer id="proyectos">
         <TitleSection>
           <CodeDots class="size-7" />
-          Proyectos destacados
+          {t("section.projects")}
         </TitleSection>
-        <Projects />
+        <Projects lang="es" />
       </SectionContainer>
 
       <SectionContainer id="sobre-mi">
         <TitleSection>
           <UserHeart class="size-8" />
-          Sobre mí
+          {t("section.about")}
         </TitleSection>
-        <AboutMe />
+        <AboutMe lang="es" />
       </SectionContainer>
     </div>
   </main>

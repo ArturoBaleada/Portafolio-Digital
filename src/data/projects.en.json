@@ -1,0 +1,83 @@
+[
+  {
+    "title": "Asegúrame (Honduras) — Insurtech & CRM",
+    "description": "Development, maintenance, and enhancement of the web infrastructure and corporate CRM for Asegúrame, a pioneer platform in the Insurtech sector in Honduras. Complete redesign and optimization of online quoting and policy issuance flows.",
+    "link": "https://www.asegurame.hn/",
+    "image": "/projects/asegurame-1.jpeg",
+    "images": [
+      "/projects/asegurame-1.jpeg",
+      "/projects/asegurame-2.jpeg",
+      "/projects/asegurame-3.jpeg",
+      "/projects/asegurame-4.jpeg",
+      "/projects/asegurame-5.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "MONGODB"]
+  },
+  {
+    "title": "Shopineoh (Fundación Terra Te Impulsa) — Marketplace",
+    "description": "Web infrastructure of Shopineoh for Fundación Terra Te Impulsa. Regional marketplace designed to empower Honduran MSMEs with an interactive product catalog, payment gateway, seasonal campaigns, and high-availability promotional management.",
+    "link": "https://shopineoh.com",
+    "image": "/projects/shopineoh-1.jpeg",
+    "images": [
+      "/projects/shopineoh-1.jpeg",
+      "/projects/shopineoh-2.png",
+      "/projects/shopineoh-3.jpeg",
+      "/projects/shopineoh-4.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Admin Terra (Fundación Terra) — Contact Manager",
+    "description": "Custom administrative dashboard and contact manager developed for Fundación Terra, focused on centralization, rapid search, and efficient handling of the organization's network of contacts and entities.",
+    "image": "/projects/admin-terra-1.jpeg",
+    "images": [
+      "/projects/admin-terra-1.jpeg",
+      "/projects/admin-terra-2.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Patas.cr — E-Commerce / Marketplace (Costa Rica)",
+    "description": "International e-commerce platform based in Costa Rica for pet care and animal wellness products. Development and integration of product catalog, advanced filtering, multi-variant purchase options, and an optimized user experience.",
+    "link": "https://patascr.com",
+    "image": "/projects/patas-1.jpeg",
+    "images": [
+      "/projects/patas-1.jpeg",
+      "/projects/patas-2.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Simpli — Healthcare & Insurance Management Platform",
+    "description": "Simpli is a tech-driven administrative and financial support platform designed for healthcare professionals and medical centers. Specialized in streamlining health insurance operations: proper billing according to CPT codes, reimbursement tracking for surgeries and appointments, prior authorization management, and payment reconciliation. All cases managed in one place with real-time visibility.",
+    "image": "/projects/simpli-1.jpeg",
+    "images": [
+      "/projects/simpli-1.jpeg",
+      "/projects/simpli-2.jpeg",
+      "/projects/simpli-3.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "Plaza San Miguel — Real Estate & Pre-sale Portal",
+    "description": "Commercial and residential pre-sale web portal in Tegucigalpa (36 loft apartments and 30 commercial spaces). Interactive architectural floor plan visualizer per level, model specifications, amenities, and direct appointment scheduling.",
+    "link": "https://plaza-sanmiguel.com/",
+    "image": "/projects/plaza-san-miguel-1.jpeg",
+    "images": [
+      "/projects/plaza-san-miguel-1.jpeg",
+      "/projects/plaza-san-miguel-2.jpeg",
+      "/projects/plaza-san-miguel-3.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+  },
+  {
+    "title": "FIKA & Corporate Expense Management (Televicentro)",
+    "description": "Development and maintenance of FIKA, the internal enterprise social and communication platform for Televicentro, Emisoras Unidas, and affiliates. Includes the optimization and automation of the per diem expense management system for over 800 corporate employees.",
+    "link": "https://fika.hn/",
+    "image": "/projects/fika.jpeg",
+    "images": [
+      "/projects/fika.jpeg"
+    ],
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "LARAVEL"]
+  }
+]

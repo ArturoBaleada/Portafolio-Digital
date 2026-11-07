@@ -1,24 +1,35 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import LanguageToggle from "./LanguageToggle.astro"
+import { useTranslations, type Lang } from "@/i18n/ui"
+
+interface Props {
+  lang?: Lang
+}
+
+const currentLang: Lang = (Astro.props.lang || Astro.currentLocale || "es") as Lang
+const t = useTranslations(currentLang)
+
+const prefix = currentLang === "en" ? "/en" : ""
 
 const navItems = [
   {
-    title: "Experiencia",
+    title: t("nav.experience"),
     label: "experiencia",
-    url: "/#experiencia",
+    url: `${prefix}/#experiencia`,
   },
   {
-    title: "Proyectos",
+    title: t("nav.projects"),
     label: "proyectos",
-    url: "/#proyectos",
+    url: `${prefix}/#proyectos`,
   },
   {
-    title: "Sobre mí",
+    title: t("nav.about"),
     label: "sobre-mi",
-    url: "/#sobre-mi",
+    url: `${prefix}/#sobre-mi`,
   },
   {
-    title: "Contacto",
+    title: t("nav.contact"),
     label: "contacto",
     url: "mailto:darbyrodriguez@outlook.com",
   },
@@ -26,23 +37,29 @@ const navItems = [
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-4"
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2 sm:mt-4 px-2"
 >
   <nav
-    class="header-nav flex gap-x-1 px-4 py-1.5 text-sm font-medium rounded-full text-stone-700 dark:text-gray-300 justify-center items-center border border-transparent"
+    class="header-nav flex flex-col sm:flex-row items-center justify-center gap-y-1.5 sm:gap-y-0 gap-x-1 px-3 sm:px-4 py-2 sm:py-1.5 text-sm font-medium rounded-2xl sm:rounded-full text-stone-700 dark:text-gray-300 border border-transparent shadow-sm"
   >
-    {
-      navItems.map((link) => (
-        <a
-          class="nav-link relative text-xs sm:text-sm block px-1.5 sm:px-3 py-2 sm:py-1.5 rounded-full transition-colors duration-200 hover:text-amber-700 dark:hover:text-amber-400"
-          aria-label={link.label}
-          href={link.url}
-        >
-          {link.title}
-        </a>
-      ))
-    }
-    <div class="ml-2 pl-2 border-l border-gray-300/30 dark:border-white/10">
+    <!-- Navigation Links -->
+    <div class="flex flex-wrap items-center justify-center gap-x-1 sm:gap-x-1">
+      {
+        navItems.map((link) => (
+          <a
+            class="nav-link relative text-xs sm:text-sm whitespace-nowrap block px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full transition-colors duration-200 hover:text-amber-700 dark:hover:text-amber-400"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Controls (Language + Theme) -->
+    <div class="flex items-center justify-center gap-2 pt-0.5 sm:pt-0 sm:ml-2 sm:pl-2 sm:border-l border-gray-300/40 dark:border-white/10 flex-shrink-0">
+      <LanguageToggle currentLang={currentLang} />
       <ThemeToggle />
     </div>
   </nav>
@@ -51,7 +68,7 @@ const navItems = [
 <script>
   document.addEventListener("astro:page-load", () => {
     const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const navItems = document.querySelectorAll("header nav a.nav-link")
 
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
@@ -98,20 +115,37 @@ const navItems = [
     animation-range: 0 100px;
   }
 
-  .header-nav {
-    @apply dark:bg-gray-900/80 bg-white/60;
-  }
-
-  .nav-link.text-amber-700 {
-    @apply font-semibold;
-  }
-
   @keyframes nav-appear {
     0% {
-      @apply dark:bg-gray-900/0 bg-white/0 border-transparent shadow-none;
+      background-color: transparent;
+      backdrop-filter: blur(0px);
+      border-color: transparent;
     }
-    to {
-      @apply shadow-lg ring-1 backdrop-blur-md ring-white/10 dark:ring-white/5 border-gray-200/20 dark:border-white/5;
+    100% {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  :global(.dark) .header-nav {
+    animation: nav-appear-dark 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-appear-dark {
+    0% {
+      background-color: transparent;
+      backdrop-filter: blur(0px);
+      border-color: transparent;
+    }
+    100% {
+      background-color: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
     }
   }
 </style>

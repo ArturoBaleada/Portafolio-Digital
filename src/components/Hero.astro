@@ -7,6 +7,14 @@ import MailIcon from "@/components/icons/Mail.astro"
 import SparklesIcon from "@/components/icons/Sparkles.astro"
 import PhoneIcon from "@/components/icons/Phone.astro"
 import SocialPill from "@/components/SocialPill.astro"
+import { useTranslations, type Lang } from "@/i18n/ui"
+
+interface Props {
+  lang?: Lang
+}
+
+const { lang = (Astro.currentLocale || "es") as Lang } = Astro.props
+const t = useTranslations(lang)
 ---
 
 <div class="max-w-2xl">
@@ -30,27 +38,27 @@ import SocialPill from "@/components/SocialPill.astro"
       rel="noopener noreferrer"
       class="flex items-center transition md:justify-center md:hover:scale-105"
     >
-      <Badge><SparklesIcon class="size-3" /> Disponible para trabajar</Badge>
+      <Badge><SparklesIcon class="size-3" /> {t("hero.badge")}</Badge>
     </a>
   </div>
 
   <h1
     class="anim-fade-in anim-delay-1 text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl dark:text-white"
   >
-    ¡Hola! Soy <span class="gradient-name">Darby Rodríguez</span>
+    {t("hero.greeting")} <span class="gradient-name">Darby Rodríguez</span>
   </h1>
 
   <p
     class="anim-fade-in anim-delay-2 mt-6 text-xl text-stone-800 dark:[&>strong]:text-amber-200 [&>strong]:text-amber-700 [&>strong]:font-semibold dark:text-gray-300"
   >
-    +4 años de experiencia. <strong
-      >Desarrollador de Software & Especialista en Automatización e IA</strong
-    > de Honduras 🇭🇳. Especializado en arquitectura web end-to-end, plataformas Insurtech y soluciones escalables impulsadas por Inteligencia Artificial.
+    {t("hero.experienceYears")}. <strong
+      >{t("hero.role")}</strong
+    > {t("hero.location")}. {t("hero.intro")}
   </p>
 
   <nav
     class="anim-fade-in anim-delay-3 flex flex-wrap gap-4 mt-8"
-    aria-label="Redes sociales y contacto"
+    aria-label={t("hero.contactAria")}
   >
     <SocialPill href="mailto:darbyrodriguez@outlook.com">
       <MailIcon class="size-4" />

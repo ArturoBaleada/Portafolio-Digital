@@ -1,26 +1,30 @@
 ---
 const personalImageAlt = "Darby Arturo Rodríguez Navarro"
+import { useTranslations, type Lang } from "@/i18n/ui"
+
+interface Props {
+  lang?: Lang
+}
+
+const { lang = (Astro.currentLocale || "es") as Lang } = Astro.props
+const t = useTranslations(lang)
 ---
 
 <article class="flex flex-col items-center justify-center gap-8 text-stone-700 dark:text-gray-300 md:flex-row">
   <div
     class="[&>p]:mb-4 [&>p>strong]:text-amber-700 dark:[&>p>strong]:text-amber-200 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
   >
-    <p>
-      Soy <strong>Darby Arturo Rodríguez Navarro</strong>, Licenciado en Informática Administrativa por la <strong>UNAH</strong> y desarrollador especializado en ingeniería de software, arquitectura web y automatización con IA. Cuento con fluidez en inglés (<strong>nivel C1 Avanzado</strong>) y un enfoque pragmático orientado a resultados de negocio.
-    </p>
-
-    <p>
-      En mi trayectoria he liderado implementaciones clave para sectores de alta exigencia: en <strong>Televicentro y Emisoras Unidas</strong> diseñé sistemas financieros críticos y logré <strong
-        >optimizar la asignación y consulta de datos masivos (SQL Server, PostgreSQL, MongoDB)</strong
-      > para más de 800 usuarios corporativos.
-    </p>
-
-    <p>
-      Actualmente en <strong>Ingeniería Digital</strong> impulso la transformación digital y el sector Insurtech desarrollando plataformas como <em>Asegúrame</em> y marketplaces regionales como <em>Shopineoh</em> y <em>Patas.cr</em>. Además, diseño arquitecturas impulsadas por <strong>Inteligencia Artificial, creación de MCPs (Model Context Protocols)</strong> y automatización de flujos con n8n y GitHub.
-    </p>
+    <p set:html={t("about.p1")} />
+    <p set:html={t("about.p2")} />
+    <p set:html={t("about.p3")} />
   </div>
 
-  <img width="200" height="200" src="/darby-about.jpg" alt={personalImageAlt} class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-amber-500/5 ring-1 ring-stone-900/70 dark:ring-white/20 " style="object-position: 50% 30%">
-
+  <img
+    width="200"
+    height="200"
+    src="/darby-about.jpg"
+    alt={personalImageAlt}
+    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-amber-500/5 ring-1 ring-stone-900/70 dark:ring-white/20"
+    style="object-position: 50% 30%"
+  />
 </article>

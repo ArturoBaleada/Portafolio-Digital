@@ -1,6 +1,7 @@
 ---
 import LinkInline from "./LinkInline.astro"
 import ArrowRight from "./icons/ArrowRight.astro"
+import { useTranslations, type Lang } from "@/i18n/ui"
 
 interface Props {
   title: string
@@ -9,9 +10,20 @@ interface Props {
   link?: string
   date: string
   current?: boolean
+  lang?: Lang
 }
 
-const { title, company, description, link, date, current = false } = Astro.props
+const {
+  title,
+  company,
+  description,
+  link,
+  date,
+  current = false,
+  lang = (Astro.currentLocale || "es") as Lang,
+} = Astro.props
+
+const t = useTranslations(lang)
 ---
 
 <div
@@ -43,7 +55,7 @@ const { title, company, description, link, date, current = false } = Astro.props
     {
       link && (
         <LinkInline href={link}>
-          Saber más sobre {company}{" "}
+          {`${t("experience.more")} ${company}`}
           <ArrowRight class="size-5" aria-hidden="true" />
         </LinkInline>
       )

@@ -1,0 +1,52 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import AboutMe from "@/components/AboutMe.astro"
+import Briefcase from "@/components/icons/Briefcase.astro"
+import CodeDots from "@/components/icons/CodeDots.astro"
+import Experience from "@/components/Experience.astro"
+import UserHeart from "@/components/icons/UserHeart.astro"
+import Projects from "@/components/Projects.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+import Hero from "@/components/Hero.astro"
+import TitleSection from "@/components/TitleSection.astro"
+import { useTranslations } from "@/i18n/ui"
+
+const t = useTranslations("en")
+---
+
+<Layout
+  title={t("seo.title")}
+  description={t("seo.description")}
+  lang="en"
+>
+  <main class="px-4">
+    <SectionContainer class="py-16 md:py-36">
+      <Hero lang="en" />
+    </SectionContainer>
+    <div class="space-y-24">
+      <SectionContainer id="experiencia">
+        <TitleSection>
+          <Briefcase class="size-8" />
+          {t("section.experience")}
+        </TitleSection>
+        <Experience lang="en" />
+      </SectionContainer>
+
+      <SectionContainer id="proyectos">
+        <TitleSection>
+          <CodeDots class="size-7" />
+          {t("section.projects")}
+        </TitleSection>
+        <Projects lang="en" />
+      </SectionContainer>
+
+      <SectionContainer id="sobre-mi">
+        <TitleSection>
+          <UserHeart class="size-8" />
+          {t("section.about")}
+        </TitleSection>
+        <AboutMe lang="en" />
+      </SectionContainer>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,55 @@
+---
+import type { Lang } from "@/i18n/ui"
+
+interface Props {
+  currentLang?: Lang
+}
+
+const { currentLang = "es" } = Astro.props
+
+const isSpanish = currentLang === "es"
+const targetUrl = isSpanish ? "/en" : "/"
+---
+
+<div class="language-toggle flex items-center text-[11px] font-semibold rounded-full p-0.5 bg-stone-200/60 dark:bg-white/10 border border-stone-300/40 dark:border-white/10 select-none">
+  <a
+    href="/"
+    class={`lang-btn px-2 py-0.5 rounded-full transition-all duration-200 ${
+      isSpanish
+        ? "bg-amber-600 text-white font-bold shadow-sm pointer-events-none"
+        : "text-stone-600 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-400"
+    }`}
+    aria-label="Cambiar a Español"
+  >
+    ES
+  </a>
+  <a
+    href="/en"
+    class={`lang-btn px-2 py-0.5 rounded-full transition-all duration-200 ${
+      !isSpanish
+        ? "bg-amber-600 text-white font-bold shadow-sm pointer-events-none"
+        : "text-stone-600 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-400"
+    }`}
+    aria-label="Switch to English"
+  >
+    EN
+  </a>
+</div>
+
+<script>
+  // Preserve URL hash when switching language
+  document.addEventListener("astro:page-load", () => {
+    const langLinks = document.querySelectorAll<HTMLAnchorElement>(".language-toggle a.lang-btn")
+    langLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const hash = window.location.hash
+        if (hash) {
+          const baseHref = link.getAttribute("href")
+          if (baseHref && !baseHref.includes("#")) {
+            link.setAttribute("href", `${baseHref}${hash}`)
+          }
+        }
+      })
+    })
+  })
+</script>

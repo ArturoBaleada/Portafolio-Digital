@@ -12,7 +12,17 @@ import MongoDBIcon from "./icons/MongoDB.astro"
 import RobotIcon from "./icons/Robot.astro"
 import ExternalLink from "./icons/ExternalLink.astro"
 import LinkButton from "./LinkButton.astro"
-import projectsData from "@/data/projects.json"
+import projectsEs from "@/data/projects.json"
+import projectsEn from "@/data/projects.en.json"
+import { useTranslations, type Lang } from "@/i18n/ui"
+
+interface Props {
+  lang?: Lang
+}
+
+const { lang = (Astro.currentLocale || "es") as Lang } = Astro.props
+const t = useTranslations(lang)
+const projectsData = lang === "en" ? projectsEn : projectsEs
 
 const TAGS: Record<string, { name: string; class: string; icon: any }> = {
   REACT: {
@@ -51,12 +61,12 @@ const TAGS: Record<string, { name: string; class: string; icon: any }> = {
     icon: CSharpIcon,
   },
   SQL: {
-    name: "SQL & Databases",
+    name: t("projects.tag.sql"),
     class: "bg-[#1f2937] text-teal-200 border border-teal-500/20",
     icon: DatabaseIcon,
   },
   AI: {
-    name: "IA & Automatización",
+    name: t("projects.tag.ai"),
     class: "bg-[#3b2405] text-amber-200 border border-amber-500/20",
     icon: RobotIcon,
   },
@@ -97,7 +107,7 @@ const PROJECTS = projectsData.map((project) => ({
                   <button
                     type="button"
                     class="prev-img-btn absolute left-2 top-1/2 -translate-y-1/2 size-9 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition opacity-90 md:opacity-0 md:group-hover/img:opacity-100 hover:scale-110 cursor-pointer border border-white/10 shadow-md"
-                    aria-label="Imagen anterior"
+                    aria-label={t("projects.prev")}
                   >
                     <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M15 18l-6-6 6-6" />
@@ -106,7 +116,7 @@ const PROJECTS = projectsData.map((project) => ({
                   <button
                     type="button"
                     class="next-img-btn absolute right-2 top-1/2 -translate-y-1/2 size-9 rounded-full bg-black/75 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition opacity-90 md:opacity-0 md:group-hover/img:opacity-100 hover:scale-110 cursor-pointer border border-white/10 shadow-md"
-                    aria-label="Imagen siguiente"
+                    aria-label={t("projects.next")}
                   >
                     <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M9 18l6-6-6-6" />
@@ -169,13 +179,13 @@ const PROJECTS = projectsData.map((project) => ({
               {github && (
                 <LinkButton href={github}>
                   <GitHub class="size-5" />
-                  Código
+                  {t("projects.code")}
                 </LinkButton>
               )}
               {link && (
                 <LinkButton href={link}>
                   <ExternalLink class="size-4" />
-                  Sitio Web
+                  {t("projects.website")}
                 </LinkButton>
               )}
             </footer>

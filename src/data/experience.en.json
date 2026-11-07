@@ -1,0 +1,25 @@
+[
+  {
+    "date": "August 2025 - Present",
+    "title": "Full Stack Developer & AI Specialist",
+    "company": "Ingeniería Digital",
+    "description": "Technical leadership in the end-to-end digitization of the Insurtech sector: policy management, claims processing, and analytical reporting. Web infrastructure and CRM evolution for Asegúrame (Honduras), as well as regional marketplaces development (Shopineoh for Fundación Terra Te Impulsa and Patascr.com in Costa Rica). Workflow automation with n8n, GitHub, rapid prototyping with Supabase/Lovable, and Model Context Protocol (MCP) design for intelligent system integrations.",
+    "link": "https://www.ingenieria.digital/",
+    "current": true
+  },
+  {
+    "date": "November 2022 - August 2025",
+    "title": "Software Engineer & Systems Analyst",
+    "company": "Televicentro y Emisoras Unidas",
+    "description": "Analysis, design, and development of the Corporate Per Diem Management System for expense tracking and financial settlement. Administration and performance optimization of massive databases (PostgreSQL, MSSQL, MongoDB) with Transact-SQL, improving query speeds for over 800 users. Continuous development and maintenance of the corporate social network FIKA and cross-departmental solutions using React, TypeScript, C#, Laravel, and Git.",
+    "link": "https://www.televicentro.com/",
+    "current": false
+  },
+  {
+    "date": "June 2022 - November 2022",
+    "title": "Software Development Intern",
+    "company": "Televicentro y Emisoras Unidas",
+    "description": "Development of web prototypes, technical code analysis support, quality assurance (QA), and continuous system integration.",
+    "current": false
+  }
+]

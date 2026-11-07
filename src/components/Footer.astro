@@ -1,5 +1,12 @@
 ---
-import HeartFilled from "./icons/HeartFilled.astro"
+import { useTranslations, type Lang } from "@/i18n/ui"
+
+interface Props {
+  lang?: Lang
+}
+
+const { lang = (Astro.currentLocale || "es") as Lang } = Astro.props
+const t = useTranslations(lang)
 const currentYear = new Date().getFullYear()
 ---
 
@@ -10,7 +17,7 @@ const currentYear = new Date().getFullYear()
     class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4 flex flex-col md:flex-row items-center gap-4"
   >
     <span class="text-sm text-center text-pretty md:text-left text-zinc-800/90 dark:text-zinc-200/90"
-      >&copy; {currentYear} Darby Rodríguez. Plantilla inspirada en
+      >&copy; {currentYear} Darby Rodríguez. {t("footer.rights")}
       <a href="https://midu.dev/" target="_blank" rel="noopener noreferrer" class="hover:underline">midudev</a>.
     </span>
     <ul
@@ -18,7 +25,7 @@ const currentYear = new Date().getFullYear()
     >
       <li>
         <a id="contacto" href="mailto:darbyrodriguez@outlook.com" class="hover:underline"
-          >Contacto</a
+          >{t("footer.contact")}</a
         >
       </li>
       <li>
