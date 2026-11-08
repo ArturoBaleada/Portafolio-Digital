@@ -1,6 +1,5 @@
 ---
 const personalImageAlt = "Darby Arturo Rodríguez Navarro"
-import CvButton from "./CvButton.astro"
 import { useTranslations, type Lang } from "@/i18n/ui"
 
 interface Props {
@@ -18,13 +17,6 @@ const t = useTranslations(lang)
     <p set:html={t("about.p1")} />
     <p set:html={t("about.p2")} />
     <p set:html={t("about.p3")} />
-
-    <div class="mt-6 pt-5 border-t border-stone-200/60 dark:border-white/10 flex flex-wrap items-center gap-3 relative z-20">
-      <CvButton lang={lang} />
-      <span class="text-xs text-stone-500 dark:text-gray-400">
-        {t("about.cvSub")}
-      </span>
-    </div>
   </div>
 
   <img

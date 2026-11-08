@@ -49,8 +49,6 @@ export const ui = {
     "about.p1": "Soy <strong>Darby Arturo Rodríguez Navarro</strong>, Licenciado en Informática Administrativa por la <strong>UNAH</strong> y desarrollador especializado en ingeniería de software, arquitectura web y automatización con IA. Cuento con fluidez en inglés (<strong>nivel C1 Avanzado</strong>) y un enfoque pragmático orientado a resultados de negocio.",
     "about.p2": "En mi trayectoria he liderado implementaciones clave para sectores de alta exigencia: en <strong>Televicentro y Emisoras Unidas</strong> diseñé sistemas financieros críticos y logré <strong>optimizar la asignación y consulta de datos masivos (SQL Server, PostgreSQL, MongoDB)</strong> para más de 800 usuarios corporativos.",
     "about.p3": "Actualmente en <strong>Ingeniería Digital</strong> impulso la transformación digital y el sector Insurtech desarrollando plataformas como <em>Asegúrame</em> y marketplaces regionales como <em>Shopineoh</em> y <em>Patas.cr</em>. Además, diseño arquitecturas impulsadas por <strong>Inteligencia Artificial, creación de MCPs (Model Context Protocols)</strong> y automatización de flujos con n8n y GitHub.",
-    "about.cvSub": "Hoja de vida completa disponible en Español e Inglés",
-
     // Footer
     "footer.rights": "Plantilla inspirada en",
     "footer.contact": "Contacto",
@@ -102,8 +100,6 @@ export const ui = {
     "about.p1": "I'm <strong>Darby Arturo Rodríguez Navarro</strong>, Bachelor's in Administrative Informatics from <strong>UNAH</strong> and a software developer specialized in software engineering, web architecture, and AI automation. I have full English proficiency (<strong>Advanced C1 Level</strong>) and a pragmatic approach focused on business results.",
     "about.p2": "Throughout my career I have led key implementations for high-demand environments: at <strong>Televicentro & Emisoras Unidas</strong> I designed critical financial systems and <strong>optimized data allocation and queries across massive databases (SQL Server, PostgreSQL, MongoDB)</strong> for more than 800 corporate users.",
     "about.p3": "Currently at <strong>Ingeniería Digital</strong>, I drive digital transformation and the Insurtech sector developing platforms such as <em>Asegúrame</em> and regional marketplaces like <em>Shopineoh</em> and <em>Patas.cr</em>. In addition, I design architectures powered by <strong>Artificial Intelligence, MCP (Model Context Protocols) creation</strong>, and workflow automation with n8n and GitHub.",
-    "about.cvSub": "Full curriculum vitae available in English & Spanish",
-
     // Footer
     "footer.rights": "Template inspired by",
     "footer.contact": "Contact",
