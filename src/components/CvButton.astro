@@ -14,7 +14,7 @@ const defaultCvUrl = lang === "en" ? "/cv-darby-rodriguez-en.pdf" : "/cv-darby-r
 const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darby_Rodriguez_ES.pdf"
 ---
 
-<div class={`relative inline-block text-left cv-dropdown-container ${className}`}>
+<div class={`relative inline-block text-left cv-dropdown-container z-20 ${className}`}>
   <div
     class="inline-flex items-center rounded-full shadow-md bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm transition-all duration-200 border border-amber-500/50 hover:shadow-amber-600/20 hover:scale-[1.02] active:scale-[0.98]"
   >
@@ -23,22 +23,22 @@ const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darb
       download={defaultCvFilename}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-l-full hover:bg-amber-700/80 transition-colors focus:outline-none"
+      class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-l-full hover:bg-amber-700/90 transition-colors focus:outline-none"
       title={lang === "en" ? "Download CV in English (PDF)" : "Descargar CV en Español (PDF)"}
     >
-      <FileDownload class="size-4" />
-      <span class="font-semibold text-xs sm:text-sm">{t("hero.cv")}</span>
+      <FileDownload class="size-5" />
+      <span class="font-semibold text-sm sm:text-base">{t("hero.cv")}</span>
     </a>
     <button
       type="button"
-      class="cv-toggle-btn px-2.5 py-1.5 border-l border-amber-500/60 rounded-r-full hover:bg-amber-700 transition-colors cursor-pointer focus:outline-none flex items-center justify-center"
+      class="cv-toggle-btn px-3 sm:px-3.5 py-2.5 border-l border-amber-500/60 rounded-r-full hover:bg-amber-700 transition-colors cursor-pointer focus:outline-none flex items-center justify-center self-stretch"
       aria-expanded="false"
       aria-haspopup="true"
       aria-label={lang === "en" ? "Select CV language" : "Seleccionar idioma del CV"}
       title={lang === "en" ? "Select language" : "Seleccionar idioma"}
     >
       <svg
-        class="cv-arrow-icon size-3.5 transition-transform duration-200"
+        class="cv-arrow-icon size-4 transition-transform duration-200"
         viewBox="0 0 20 20"
         fill="currentColor"
         aria-hidden="true"
@@ -54,10 +54,10 @@ const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darb
 
   <!-- Dropdown Menu -->
   <div
-    class="cv-dropdown-menu hidden absolute left-0 mt-2 w-52 rounded-2xl bg-stone-50/95 dark:bg-stone-900/95 shadow-2xl border border-stone-200 dark:border-stone-800 py-1.5 z-30 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150"
+    class="cv-dropdown-menu hidden absolute left-0 mt-2 w-52 rounded-2xl bg-white dark:bg-stone-900 shadow-2xl border border-stone-200 dark:border-stone-800 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150"
     role="menu"
   >
-    <div class="px-3 py-1 text-[10px] uppercase font-mono tracking-wider text-stone-500 dark:text-gray-400 border-b border-stone-200/60 dark:border-white/10 mb-1">
+    <div class="px-3 py-1 text-[10px] uppercase font-mono tracking-wider text-stone-500 dark:text-gray-400 border-b border-stone-200/80 dark:border-white/10 mb-1">
       {lang === "en" ? "Choose version" : "Elegir versión"}
     </div>
 
@@ -67,14 +67,14 @@ const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darb
       download="CV_Darby_Rodriguez_ES.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center justify-between px-3 py-2 text-xs font-medium text-stone-700 dark:text-gray-200 hover:bg-amber-500/10 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mx-1 rounded-lg group"
+      class="flex items-center justify-between px-3 py-2 text-xs font-medium text-stone-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-stone-800 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mx-1 rounded-lg group"
       role="menuitem"
     >
       <span class="flex items-center gap-2">
         <span class="text-sm">🇪🇸</span>
         <span>{t("cv.spanish")}</span>
       </span>
-      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-600 dark:text-stone-300 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 group-hover:bg-amber-600 group-hover:text-white transition-colors">
         PDF
       </span>
     </a>
@@ -85,14 +85,14 @@ const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darb
       download="CV_Darby_Rodriguez_EN.pdf"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center justify-between px-3 py-2 text-xs font-medium text-stone-700 dark:text-gray-200 hover:bg-amber-500/10 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mx-1 rounded-lg group"
+      class="flex items-center justify-between px-3 py-2 text-xs font-medium text-stone-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-stone-800 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mx-1 rounded-lg group"
       role="menuitem"
     >
       <span class="flex items-center gap-2">
         <span class="text-sm">🇺🇸</span>
         <span>{t("cv.english")}</span>
       </span>
-      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-600 dark:text-stone-300 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 group-hover:bg-amber-600 group-hover:text-white transition-colors">
         PDF
       </span>
     </a>
@@ -116,10 +116,12 @@ const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darb
 
         if (shouldOpen) {
           menu.classList.remove("hidden")
+          container.classList.add("z-40")
           toggleBtn.setAttribute("aria-expanded", "true")
           if (arrowIcon) arrowIcon.classList.add("rotate-180")
         } else {
           menu.classList.add("hidden")
+          container.classList.remove("z-40")
           toggleBtn.setAttribute("aria-expanded", "false")
           if (arrowIcon) arrowIcon.classList.remove("rotate-180")
         }

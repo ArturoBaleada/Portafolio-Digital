@@ -57,11 +57,15 @@ const t = useTranslations(lang)
     > {t("hero.location")}. {t("hero.intro")}
   </p>
 
+  <!-- Call to action: CV Download in its own row -->
+  <div class="anim-fade-in anim-delay-3 mt-7 relative z-20">
+    <CvButton lang={lang} />
+  </div>
+
   <nav
-    class="anim-fade-in anim-delay-3 flex flex-wrap items-center gap-3 sm:gap-4 mt-8"
+    class="anim-fade-in anim-delay-3 flex flex-wrap items-center gap-3 sm:gap-4 mt-5 relative z-10"
     aria-label={t("hero.contactAria")}
   >
-    <CvButton lang={lang} />
     <SocialPill href="mailto:darbyrodriguez@outlook.com">
       <MailIcon class="size-4" />
       darbyrodriguez@outlook.com
