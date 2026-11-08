@@ -1,0 +1,148 @@
+---
+import FileDownload from "./icons/FileDownload.astro"
+import { useTranslations, type Lang } from "@/i18n/ui"
+
+interface Props {
+  lang?: Lang
+  class?: string
+}
+
+const { lang = (Astro.currentLocale || "es") as Lang, class: className = "" } = Astro.props
+const t = useTranslations(lang)
+
+const defaultCvUrl = lang === "en" ? "/cv-darby-rodriguez-en.pdf" : "/cv-darby-rodriguez-es.pdf"
+const defaultCvFilename = lang === "en" ? "CV_Darby_Rodriguez_EN.pdf" : "CV_Darby_Rodriguez_ES.pdf"
+---
+
+<div class={`relative inline-block text-left cv-dropdown-container ${className}`}>
+  <div
+    class="inline-flex items-center rounded-full shadow-md bg-amber-600 hover:bg-amber-700 text-white font-medium text-sm transition-all duration-200 border border-amber-500/50 hover:shadow-amber-600/20 hover:scale-[1.02] active:scale-[0.98]"
+  >
+    <a
+      href={defaultCvUrl}
+      download={defaultCvFilename}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-l-full hover:bg-amber-700/80 transition-colors focus:outline-none"
+      title={lang === "en" ? "Download CV in English (PDF)" : "Descargar CV en Español (PDF)"}
+    >
+      <FileDownload class="size-4" />
+      <span class="font-semibold text-xs sm:text-sm">{t("hero.cv")}</span>
+    </a>
+    <button
+      type="button"
+      class="cv-toggle-btn px-2.5 py-1.5 border-l border-amber-500/60 rounded-r-full hover:bg-amber-700 transition-colors cursor-pointer focus:outline-none flex items-center justify-center"
+      aria-expanded="false"
+      aria-haspopup="true"
+      aria-label={lang === "en" ? "Select CV language" : "Seleccionar idioma del CV"}
+      title={lang === "en" ? "Select language" : "Seleccionar idioma"}
+    >
+      <svg
+        class="cv-arrow-icon size-3.5 transition-transform duration-200"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Dropdown Menu -->
+  <div
+    class="cv-dropdown-menu hidden absolute left-0 mt-2 w-52 rounded-2xl bg-stone-50/95 dark:bg-stone-900/95 shadow-2xl border border-stone-200 dark:border-stone-800 py-1.5 z-30 backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150"
+    role="menu"
+  >
+    <div class="px-3 py-1 text-[10px] uppercase font-mono tracking-wider text-stone-500 dark:text-gray-400 border-b border-stone-200/60 dark:border-white/10 mb-1">
+      {lang === "en" ? "Choose version" : "Elegir versión"}
+    </div>
+
+    <!-- Español -->
+    <a
+      href="/cv-darby-rodriguez-es.pdf"
+      download="CV_Darby_Rodriguez_ES.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-between px-3 py-2 text-xs font-medium text-stone-700 dark:text-gray-200 hover:bg-amber-500/10 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mx-1 rounded-lg group"
+      role="menuitem"
+    >
+      <span class="flex items-center gap-2">
+        <span class="text-sm">🇪🇸</span>
+        <span>{t("cv.spanish")}</span>
+      </span>
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-600 dark:text-stone-300 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+        PDF
+      </span>
+    </a>
+
+    <!-- Inglés -->
+    <a
+      href="/cv-darby-rodriguez-en.pdf"
+      download="CV_Darby_Rodriguez_EN.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center justify-between px-3 py-2 text-xs font-medium text-stone-700 dark:text-gray-200 hover:bg-amber-500/10 hover:text-amber-700 dark:hover:text-amber-400 transition-colors mx-1 rounded-lg group"
+      role="menuitem"
+    >
+      <span class="flex items-center gap-2">
+        <span class="text-sm">🇺🇸</span>
+        <span>{t("cv.english")}</span>
+      </span>
+      <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-200/70 dark:bg-stone-800 text-stone-600 dark:text-stone-300 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+        PDF
+      </span>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const containers = document.querySelectorAll<HTMLElement>(".cv-dropdown-container")
+
+    containers.forEach((container) => {
+      const toggleBtn = container.querySelector<HTMLButtonElement>(".cv-toggle-btn")
+      const menu = container.querySelector<HTMLElement>(".cv-dropdown-menu")
+      const arrowIcon = container.querySelector<HTMLElement>(".cv-arrow-icon")
+
+      if (!toggleBtn || !menu) return
+
+      const toggleMenu = (open?: boolean) => {
+        const isHidden = menu.classList.contains("hidden")
+        const shouldOpen = open !== undefined ? open : isHidden
+
+        if (shouldOpen) {
+          menu.classList.remove("hidden")
+          toggleBtn.setAttribute("aria-expanded", "true")
+          if (arrowIcon) arrowIcon.classList.add("rotate-180")
+        } else {
+          menu.classList.add("hidden")
+          toggleBtn.setAttribute("aria-expanded", "false")
+          if (arrowIcon) arrowIcon.classList.remove("rotate-180")
+        }
+      }
+
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
+        toggleMenu()
+      })
+
+      // Close when clicking anywhere else
+      document.addEventListener("click", (e) => {
+        if (!container.contains(e.target as Node)) {
+          toggleMenu(false)
+        }
+      })
+
+      // Close on Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          toggleMenu(false)
+        }
+      })
+    })
+  })
+</script>

@@ -7,6 +7,7 @@ import MailIcon from "@/components/icons/Mail.astro"
 import SparklesIcon from "@/components/icons/Sparkles.astro"
 import PhoneIcon from "@/components/icons/Phone.astro"
 import SocialPill from "@/components/SocialPill.astro"
+import CvButton from "@/components/CvButton.astro"
 import { useTranslations, type Lang } from "@/i18n/ui"
 
 interface Props {
@@ -57,9 +58,10 @@ const t = useTranslations(lang)
   </p>
 
   <nav
-    class="anim-fade-in anim-delay-3 flex flex-wrap gap-4 mt-8"
+    class="anim-fade-in anim-delay-3 flex flex-wrap items-center gap-3 sm:gap-4 mt-8"
     aria-label={t("hero.contactAria")}
   >
+    <CvButton lang={lang} />
     <SocialPill href="mailto:darbyrodriguez@outlook.com">
       <MailIcon class="size-4" />
       darbyrodriguez@outlook.com
