@@ -24,7 +24,7 @@
       "/projects/shopineoh-3.jpeg",
       "/projects/shopineoh-4.jpeg"
     ],
-    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "NODE"]
   },
   {
     "title": "Admin Terra (Fundación Terra) — Gestor de Contactos",
@@ -45,7 +45,7 @@
       "/projects/patas-1.jpeg",
       "/projects/patas-2.jpeg"
     ],
-    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "NODE"]
   },
   {
     "title": "Simpli — Plataforma de Gestión Médica & Seguros",
@@ -56,7 +56,7 @@
       "/projects/simpli-2.jpeg",
       "/projects/simpli-3.jpeg"
     ],
-    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "NODE"]
   },
   {
     "title": "Plaza San Miguel — Portal Inmobiliario & Preventa",
@@ -68,7 +68,7 @@
       "/projects/plaza-san-miguel-2.jpeg",
       "/projects/plaza-san-miguel-3.jpeg"
     ],
-    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "NODE"]
   },
   {
     "title": "FIKA & Sistema de Gestión de Viáticos (Televicentro)",
