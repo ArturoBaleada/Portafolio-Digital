@@ -11,7 +11,7 @@
       "/projects/asegurame-4.jpeg",
       "/projects/asegurame-5.jpeg"
     ],
-    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "MONGODB"]
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "MONGODB", "LARAVEL"]
   },
   {
     "title": "Shopineoh (Fundación Terra Te Impulsa) — Marketplace",
@@ -34,7 +34,7 @@
       "/projects/admin-terra-1.jpeg",
       "/projects/admin-terra-2.jpeg"
     ],
-    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES"]
+    "tags": ["TYPESCRIPT", "REACT", "TAILWIND", "POSTGRES", "LARAVEL"]
   },
   {
     "title": "Patas.cr — E-Commerce / Marketplace (Costa Rica)",
